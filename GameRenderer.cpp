@@ -10,13 +10,15 @@ GameRenderer::GameRenderer (unsigned int w, unsigned int h, const char* windowTi
 	init(w, h, windowTitle);
 }
 
-GameRenderer::~GameRenderer (void) 
+GameRenderer::~GameRenderer (void)
 {
 	if (renderer_ != nullptr)
 		SDL_DestroyRenderer(renderer_);
 	
 	if (window_ != nullptr)
 		SDL_DestroyWindow(window_);
+
+	SDL_Quit();
 }
 
 void GameRenderer::init (unsigned int w, unsigned int h, const char* windowTitle)
@@ -35,7 +37,19 @@ void GameRenderer::init (unsigned int w, unsigned int h, const char* windowTitle
 		throw std::runtime_error("Failed to initialize renderer");
 }
 
-void GameRenderer::start (void)
+void GameRenderer::show (void)
 {
-	
+	SDL_ShowWindow(window_);
+}
+
+void GameRenderer::hide (void)
+{
+	SDL_HideWindow(window_);
+}
+
+void GameRenderer::draw (void)
+{
+	SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 255 );
+	SDL_RenderClear( renderer_ );
+	SDL_RenderPresent( renderer_ );
 }

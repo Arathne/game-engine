@@ -9,12 +9,14 @@ set( CMAKE_CXX_STANDARD 11 )
 set( CMAKE_CXX_STANDARD_REQUIRED ON )
 
 #include(FindPkgConfig)
-
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(SDL2 REQUIRED sdl2)
 
-add_executable( engine main.cpp GameRenderer.cpp )
+set(glm_DIR glm/cmake/glm)
+find_package(glm REQUIRED)
 
-target_link_libraries( engine ${SDL2_LIBRARIES} )
+add_executable( engine main.cpp GameRenderer.cpp Events.cpp Color.cpp )
+
+target_link_libraries( engine ${SDL2_LIBRARIES} glm::glm )
 target_include_directories( engine PUBLIC ${SDL2_INCLUDE_DIRS} )
 target_compile_options( engine PUBLIC ${SDL2_CFLAGS_OTHER} )
