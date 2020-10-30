@@ -44,7 +44,7 @@ bool Texture::operator == (const Texture & rhs)
 {
 	bool equal = true;
 
-	if (id_ != rhs.id_ || path_ != rhs.path_)
+	if (id_ != rhs.id_ )
 		equal = false;
 
 	return equal;

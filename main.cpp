@@ -14,9 +14,9 @@
 
 int main()
 {
-	GameRenderer renderer(WINDOW_WIDTH, WINDOW_HEIGHT, "Hello World");
+	GameRenderer renderer(WINDOW_WIDTH, WINDOW_HEIGHT, "GameEngine");
 	
-	Texture texture("abcd");	
+	Texture texture(EPIC_FACE);
 	
 	Workspace::addTexture(texture);	
 
@@ -25,14 +25,14 @@ int main()
 	Workspace::setCurrentMap(level);	
 	
 	renderer.show();
-	
+		
 	bool run = true;
 	while (run)
 	{
 		Events::poll();
 		if (Events::hasType(SDL_QUIT))
-			run = false;		
-
+			run = false;
+		
 		renderer.draw();
 	}
 }

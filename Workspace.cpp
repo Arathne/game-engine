@@ -28,18 +28,13 @@ void Workspace::addTexture (Texture & texture)
 		Texture current = **it;	
 
 		if (current == texture)
-		{
-			std::cout << "DUPLICATE FOUND" << std::endl;
 			duplicateFound = true;
-		}
 
 		it++;
 	}
 
-	if (duplicateFound == false){
-		std::cout << "added texture to array" << std::endl;
+	if (duplicateFound == false)
 		textures_.push_back(&texture);
-	}
 }
 
 std::vector<Texture*> & Workspace::getTextures (void)
@@ -49,6 +44,8 @@ std::vector<Texture*> & Workspace::getTextures (void)
 		if (*it == nullptr)
 			textures_.erase( it-- );
 	}
+	
+	std::cout << "returning size : " << textures_.size() << std::endl;
 
 	return textures_;
 }

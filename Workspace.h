@@ -1,9 +1,9 @@
 #ifndef WORKSPACE_H
 #define WORKSPACE_H
 
-#include <iostream>
 #include <vector>
 #include "Map.h"
+#include <iostream>
 
 class Workspace
 {

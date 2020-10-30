@@ -35,6 +35,8 @@ void GameRenderer::init (unsigned int w, unsigned int h, const char* windowTitle
 
 	if (renderer_ == nullptr)
 		throw std::runtime_error("Failed to initialize renderer");
+	
+	IMG_Init(IMG_INIT_PNG);
 }
 
 void GameRenderer::show (void)
@@ -49,6 +51,8 @@ void GameRenderer::hide (void)
 
 void GameRenderer::draw (void)
 {
+	GameRenderer::checkTextures();
+
 	SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 255 );
 	SDL_RenderClear( renderer_ );
 	
@@ -77,9 +81,100 @@ void GameRenderer::drawMap (void)
 			rectangle.y = position.y;
 			rectangle.w = current.getWidth();
 			rectangle.h = current.getHeight();
-
+			
 			SDL_SetRenderDrawColor( renderer_, color.red(), color.green(), color.blue(), color.alpha() );
-			SDL_RenderFillRect( renderer_, &rectangle );
+			
+			int textureIndex = GameRenderer::getTextureIndex(current.getTextureId());
+			if (textureIndex < 0)
+				SDL_RenderFillRect( renderer_, &rectangle );
+			else
+				SDL_RenderCopy( renderer_, loadedTextures_.at(textureIndex), nullptr, &rectangle );
 		}
 	}
-}	
+}
+
+void GameRenderer::checkTextures (void)
+{
+	std::vector<Texture*> workspaceTextures = Workspace::getTextures();
+	for (auto it = workspaceTextures.begin(); it != workspaceTextures.end(); it++)
+	{
+		Texture current = **it;
+		if (GameRenderer::isTextureInRenderer(current) == false)
+			GameRenderer::loadTexture(current);
+	}
+	
+	int index = 0;
+	for (auto it = textures_.begin(); it != textures_.end(); it++)
+	{
+		Texture current = **it;
+		if (GameRenderer::isTextureInWorkspace(current) == false)
+		{
+			std::cout << "destroying texture :: " << current.getId() << std::endl;
+			
+			SDL_DestroyTexture( loadedTextures_.at(index) );
+			 
+			loadedTextures_.erase( loadedTextures_.begin() + index );
+			
+			textures_.erase( it-- );
+			std::cout << "successfully destroyed" << std::endl; 
+			index--;
+		}
+		index++;
+	}
+}
+
+void GameRenderer::loadTexture (Texture & texture)
+{
+	if (isTextureInRenderer(texture) == false)
+	{
+		SDL_Surface* surface = IMG_Load(texture.getPath());
+		SDL_Texture* newLoadedTexture = SDL_CreateTextureFromSurface( renderer_, surface );
+		
+		loadedTextures_.push_back(newLoadedTexture);
+		textures_.push_back(&texture);
+	
+		std::cout << "loaded texture :: " << texture.getPath() << "::" << texture.getId() << std::endl;
+
+		SDL_FreeSurface(surface);
+	}
+}
+
+bool GameRenderer::isTextureInWorkspace (Texture & texture) const
+{
+	std::vector<Texture*> workspaceTextures = Workspace::getTextures();
+	for (auto it = workspaceTextures.begin(); it != workspaceTextures.end(); it++)
+	{
+		Texture current = **it;
+		if (current == texture)
+			return true;
+	}
+
+	return false;
+}
+
+bool GameRenderer::isTextureInRenderer (Texture & texture) const
+{
+	for (auto it = textures_.begin(); it != textures_.end(); it++)
+	{
+		Texture current = **it;
+		if (current == texture)
+			return true;
+	}
+	
+	return false;
+}
+
+int GameRenderer::getTextureIndex (unsigned int id) const
+{
+	int index = 0;
+	for (auto it = textures_.begin(); it != textures_.end(); it++)
+	{
+		Texture current = **it;
+		if (current.getId() == id)
+			return index;
+		
+		index++;
+	}
+	
+	return -1;
+}
