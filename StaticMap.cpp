@@ -15,6 +15,17 @@ std::vector<Tile*> StaticMap::getTiles (void)
 	tiles.push_back(&image_);
 	return tiles;
 }
+
+void StaticMap::linkTexture (Texture & texture)
+{
+	image_.setTextureId(texture.getId());
+}
+
+void StaticMap::unlinkTexture (void)
+{
+	image_.setTextureId(0);
+}
+
 		
 glm::vec2 StaticMap::getPosition (void) const
 {

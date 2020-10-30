@@ -5,7 +5,7 @@ Tile::Tile (void):
 	height_(10),
 	width_(10),
 	color_(Color::make(0, 0, 150, 255)),
-	textureId_(-1)
+	textureId_(0)
 {}
 
 Tile::Tile (int x, int y, int w, int h, Color color):
@@ -13,7 +13,7 @@ Tile::Tile (int x, int y, int w, int h, Color color):
 	height_(h),
 	width_(w),
 	color_(color),
-	textureId_(-1)
+	textureId_(0)
 {}
 
 Tile::~Tile (void) {}

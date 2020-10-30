@@ -15,7 +15,7 @@ pkg_check_modules(SDL2 REQUIRED sdl2)
 set(glm_DIR glm/cmake/glm)
 find_package(glm REQUIRED)
 
-add_executable( engine main.cpp GameRenderer.cpp Events.cpp Color.cpp Scene.cpp Workspace.cpp Tile.cpp StaticMap.cpp )
+add_executable( engine main.cpp GameRenderer.cpp Events.cpp Color.cpp Scene.cpp Workspace.cpp Tile.cpp StaticMap.cpp Texture.cpp )
 
 target_link_libraries( engine ${SDL2_LIBRARIES} glm::glm )
 target_include_directories( engine PUBLIC ${SDL2_INCLUDE_DIRS} )

@@ -53,22 +53,6 @@ void GameRenderer::draw (void)
 	SDL_RenderClear( renderer_ );
 	
 	GameRenderer::drawMap();	
-	/*std::vector<Scene*> scenes_ = Workspace::getScenes();
-	
-	SDL_Rect square;
-	square.x = 50;
-	square.y = 50;
-	square.h = 200;
-	square.w = 200;
-
- 	for (auto it = scenes_.begin(); it != scenes_.end(); it++ )
-	{
-		Scene current = **it;
-		Color color = current.getColor();
-
-		SDL_SetRenderDrawColor( renderer_, color.red(), color.green(), color.blue(), color.alpha() );
-		SDL_RenderFillRect( renderer_, &square );
-	}*/
 
 	SDL_RenderPresent( renderer_ );
 }

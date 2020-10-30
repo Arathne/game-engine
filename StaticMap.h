@@ -12,6 +12,9 @@ class StaticMap : public Map
 	
 		std::vector<Tile*> getTiles (void);		
 		
+		void linkTexture (Texture & texture);
+		void unlinkTexture (void);
+	
 		glm::vec2 getPosition (void) const;			
 		int getHeight (void) const;
 		int getWidth (void) const;

@@ -5,20 +5,25 @@
 
 #include "Color.h"
 #include "Workspace.h"
-
 #include <glm/glm.hpp>
-
 #include "StaticMap.h"
+#include "Texture.h"
+
+#define WINDOW_WIDTH 500
+#define WINDOW_HEIGHT 500
 
 int main()
 {
-	GameRenderer renderer(500, 500, "Hello World");
+	GameRenderer renderer(WINDOW_WIDTH, WINDOW_HEIGHT, "Hello World");
 	
-	Workspace workspace;
+	Texture texture("abcd");	
 	
-	StaticMap level(50, 50, 300, 300);
-	workspace.setCurrentMap(level);	
+	Workspace::addTexture(texture);	
 
+	StaticMap level(50, 50, 300, 300);
+	level.linkTexture(texture);
+	Workspace::setCurrentMap(level);	
+	
 	renderer.show();
 	
 	bool run = true;
