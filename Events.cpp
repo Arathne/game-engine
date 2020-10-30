@@ -17,7 +17,7 @@ void Events::poll (void)
 
 bool Events::hasType (SDL_EventType event)
 {
- 	for (auto it = events_.begin(); it != events_.end(); ++it )
+ 	for (auto it = events_.begin(); it != events_.end(); it++ )
 	{
 		if (it->type == event)
 			return true;

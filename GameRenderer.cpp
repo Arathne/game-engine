@@ -51,5 +51,51 @@ void GameRenderer::draw (void)
 {
 	SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 255 );
 	SDL_RenderClear( renderer_ );
+	
+	GameRenderer::drawMap();	
+	/*std::vector<Scene*> scenes_ = Workspace::getScenes();
+	
+	SDL_Rect square;
+	square.x = 50;
+	square.y = 50;
+	square.h = 200;
+	square.w = 200;
+
+ 	for (auto it = scenes_.begin(); it != scenes_.end(); it++ )
+	{
+		Scene current = **it;
+		Color color = current.getColor();
+
+		SDL_SetRenderDrawColor( renderer_, color.red(), color.green(), color.blue(), color.alpha() );
+		SDL_RenderFillRect( renderer_, &square );
+	}*/
+
 	SDL_RenderPresent( renderer_ );
 }
+
+void GameRenderer::drawMap (void)
+{
+	Map* currentMap = Workspace::getCurrentMap();
+
+	if (currentMap != nullptr)
+	{
+		std::vector<Tile*> tiles = currentMap-> getTiles();
+		
+ 		for (auto it = tiles.begin(); it != tiles.end(); it++ )
+		{
+			Tile current = **it;
+			
+			glm::vec2 position = current.getPosition();
+			Color color = current.getColor();
+			
+			SDL_Rect rectangle;
+			rectangle.x = position.x;
+			rectangle.y = position.y;
+			rectangle.w = current.getWidth();
+			rectangle.h = current.getHeight();
+
+			SDL_SetRenderDrawColor( renderer_, color.red(), color.green(), color.blue(), color.alpha() );
+			SDL_RenderFillRect( renderer_, &rectangle );
+		}
+	}
+}	

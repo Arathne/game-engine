@@ -12,7 +12,8 @@ class Color
 		unsigned int red (void) const;
 		unsigned int green (void) const;
 		unsigned int blue (void) const;
-		
+		unsigned int alpha (void) const;
+	
 		const Color & operator = (const Color & rhs);
 		
 		static Color make (int r, int g, int b, int a);

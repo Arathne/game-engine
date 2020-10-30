@@ -5,6 +5,12 @@
 #include <stdexcept>
 #include <vector>
 
+#include "Workspace.h"
+#include "Map.h"
+#include "Tile.h"
+#include "Scene.h"
+#include "Color.h"
+
 class GameRenderer
 {
 	public:
@@ -18,7 +24,8 @@ class GameRenderer
 
 	private:
 		void init (unsigned int w, unsigned int h, const char* windowTitle);
-			
+		void drawMap (void);		
+		
 		SDL_Window* window_;
 		SDL_Renderer* renderer_;
 };

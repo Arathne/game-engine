@@ -63,6 +63,11 @@ unsigned int Color::blue (void) const
 	return (unsigned int) blue_;
 }
 
+unsigned int Color::alpha (void) const
+{
+	return (unsigned int) alpha_;
+}
+
 const Color & Color::operator = (const Color & rhs)
 {
 	if ( &rhs != &(*this) )
