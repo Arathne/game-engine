@@ -29,7 +29,8 @@ class GameRenderer
 	private:
 		void init (unsigned int w, unsigned int h, const char* windowTitle);
 		void drawMap (void);		
-		
+		void drawSprites (void) const;		
+	
 		void checkTextures (void);
 		void loadTexture (Texture & texture);
 		bool isTextureInWorkspace (Texture & texture) const;

@@ -8,6 +8,7 @@
 #include <glm/glm.hpp>
 #include "StaticMap.h"
 #include "Texture.h"
+#include "StaticSprite.h"
 
 #define WINDOW_WIDTH 500
 #define WINDOW_HEIGHT 500
@@ -18,14 +19,19 @@ int main()
 	
 	Texture texture(EPIC_FACE);
 	
-	Workspace::addTexture(texture);	
+	StaticSprite person;	
+	person.setFrame(texture);	
+	person.setVelocity(1, 1);	
 
-	StaticMap level(50, 50, 300, 300);
+	StaticMap level(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 	level.linkTexture(texture);
+	
+	Workspace::addTexture(texture);	
+	Workspace::addSprite(person);	
 	Workspace::setCurrentMap(level);	
 	
 	renderer.show();
-		
+	
 	bool run = true;
 	while (run)
 	{

@@ -2,6 +2,7 @@
 
 Map* Workspace::currentMap_ = nullptr;
 std::vector<Texture*> Workspace::textures_;
+std::vector<Sprite*> Workspace::sprites_;
 
 void Workspace::setCurrentMap (Map & map)
 {
@@ -45,7 +46,79 @@ std::vector<Texture*> & Workspace::getTextures (void)
 			textures_.erase( it-- );
 	}
 	
-	std::cout << "returning size : " << textures_.size() << std::endl;
-
 	return textures_;
+}
+
+void Workspace::removeTexture (Texture & texture)
+{
+	bool run = true;
+	auto it = textures_.begin();
+	
+	while( it != textures_.end() && run )
+	{
+		Texture current = **it;	
+
+		if (current == texture)
+		{
+			textures_.erase(it);
+			run = false;
+		}
+	}
+}	
+
+void Workspace::addSprite (Sprite & sprite)
+{
+	bool duplicateFound = false;
+	
+	auto it = sprites_.begin();
+	while( it != sprites_.end() && !duplicateFound )
+	{
+		Sprite* current = *it;
+
+		if (*current == sprite)
+			duplicateFound = true;
+
+		it++;
+	}
+
+	if (duplicateFound == false) 
+		sprites_.push_back(&sprite);
+}
+
+void Workspace::removeSprite (Sprite & sprite)
+{
+	bool run = true;
+	auto it = sprites_.begin();
+	
+	while( it != sprites_.end() && run )
+	{
+		Sprite* current = *it;	
+
+		if (*current == sprite)
+		{
+			sprites_.erase(it);
+			run = false;
+		}
+	}
+
+}
+
+std::vector<Sprite*> & Workspace::getSprites (void)
+{
+ 	for (auto it = sprites_.begin(); it != sprites_.end(); it++ )
+	{
+		if (*it == nullptr)
+			sprites_.erase( it-- );
+	}
+	
+	return sprites_;
+}
+
+void Workspace::tick (void)
+{
+	for (auto it = sprites_.begin(); it != sprites_.end(); it++)
+	{
+		Sprite* current = *it;
+		current-> update();
+	}
 }

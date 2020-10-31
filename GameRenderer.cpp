@@ -17,7 +17,18 @@ GameRenderer::~GameRenderer (void)
 	
 	if (window_ != nullptr)
 		SDL_DestroyWindow(window_);
+	
+	int index = 0;
+	for (auto it = loadedTextures_.begin(); it != loadedTextures_.end(); it++)
+	{
+			SDL_Texture* current = *it;			
+			Texture textureObj = *textures_.at(index);
 
+			std::cout << "destroyed texture :: " << textureObj.getId() << std::endl;
+			SDL_DestroyTexture( current );
+			index++;	 
+	}
+	
 	SDL_Quit();
 }
 
@@ -51,14 +62,16 @@ void GameRenderer::hide (void)
 
 void GameRenderer::draw (void)
 {
-	GameRenderer::checkTextures();
+	GameRenderer::checkTextures();	
 
 	SDL_SetRenderDrawColor( renderer_, 0, 0, 0, 255 );
 	SDL_RenderClear( renderer_ );
 	
-	GameRenderer::drawMap();	
+	GameRenderer::drawMap();
+	GameRenderer::drawSprites();
 
 	SDL_RenderPresent( renderer_ );
+	Workspace::tick();
 }
 
 void GameRenderer::drawMap (void)
@@ -93,6 +106,33 @@ void GameRenderer::drawMap (void)
 	}
 }
 
+void GameRenderer::drawSprites (void) const
+{
+	std::vector<Sprite*> sprites = Workspace::getSprites();
+	
+	for (auto it = sprites.begin(); it != sprites.end(); it++)
+	{
+		Tile frame = (**it).getFrame();
+		
+		glm::vec2 position = frame.getPosition();
+		Color color = frame.getColor();
+		
+		SDL_Rect rectangle;
+		rectangle.x = position.x;
+		rectangle.y = position.y;
+		rectangle.w = frame.getWidth();
+		rectangle.h = frame.getHeight();
+			
+		SDL_SetRenderDrawColor( renderer_, color.red(), color.green(), color.blue(), color.alpha() );
+			
+		int textureIndex = GameRenderer::getTextureIndex(frame.getTextureId());
+		if (textureIndex < 0)
+			SDL_RenderFillRect( renderer_, &rectangle );
+		else
+			SDL_RenderCopy( renderer_, loadedTextures_.at(textureIndex), nullptr, &rectangle );
+	}
+}	
+
 void GameRenderer::checkTextures (void)
 {
 	std::vector<Texture*> workspaceTextures = Workspace::getTextures();
@@ -116,7 +156,6 @@ void GameRenderer::checkTextures (void)
 			loadedTextures_.erase( loadedTextures_.begin() + index );
 			
 			textures_.erase( it-- );
-			std::cout << "successfully destroyed" << std::endl; 
 			index--;
 		}
 		index++;
