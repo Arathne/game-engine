@@ -32,6 +32,16 @@ void StaticSprite::setVelocity (int dx, int dy)
 	velocity_ = glm::vec2(dx, dy);
 }
 
+void StaticSprite::setVelocityX (int dx)
+{
+	velocity_.x = dx;
+}
+
+void StaticSprite::setVelocityY (int dy)
+{
+	velocity_.y = dy;
+}
+
 void StaticSprite::setAcceleration (int ddx, int ddy) 
 {
 	acceleration_ = glm::vec2(ddx, ddy);

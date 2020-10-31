@@ -14,6 +14,8 @@ class StaticSprite : public Sprite
       
 		void setPosition (int x, int y);
 		void setVelocity (int dx, int dy);
+		void setVelocityX (int dx);
+		void setVelocityY (int dy);
 		void setAcceleration (int ddx, int ddy);
 		void setSize (int w, int h);
 		
