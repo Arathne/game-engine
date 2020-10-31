@@ -1,13 +1,15 @@
+#### see uml
 ## game engine
 #### dependencies -- use ubuntu on windows w/ xming server
-`sh
-$ sudo apt-get install pkg-config cmake libsdl2-dev
-`
+```console
+$ sudo apt-get install pkg-config cmake libsdl2-dev libsdl2-image-dev g++
+$ git submodule update --init
+```
 #### compile
-`sh
+```console
 $ make
 $ make run
-`
+```
 ## challenges
 #### Uses C++, SDL2, cmake/make
 #### The main goal of this game engine is to seperate the rendering from everything else. Focusing less on SDL2 and more on the game itself. To do this, sprites/textures/ and background image need to be loaded into the Workspace. Then the game renderer will take objects from there to draw the images.
