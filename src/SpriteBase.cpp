@@ -7,7 +7,8 @@ SpriteBase::SpriteBase (void):
 	visible_ (true),
 	position_ (glm::vec2(0, 0)),
 	velocity_ (glm::vec2(0, 0)),
-	acceleration_ (glm::vec2(0, 0))
+	acceleration_ (glm::vec2(0, 0)),
+	direction_ (glm::vec2(0, 0))
 {}
 
 SpriteBase::~SpriteBase (void) {}
@@ -34,14 +35,19 @@ glm::vec2 SpriteBase::getSize (void) const
 	return frame_.getSize();
 }
 
+unsigned int SpriteBase::getId (void) const
+{
+	return id_;
+}
+
 bool SpriteBase::isVisible (void) const
 {
 	return visible_;
 }	
 
-unsigned int SpriteBase::getId (void) const
+glm::vec2 SpriteBase::getDirection (void) const 
 {
-	return id_;
+	return direction_;
 }
 
 /* SETTERS */
@@ -61,6 +67,11 @@ void SpriteBase::setWidth (int w)
 	frame_.setWidth(w);
 }
 
+void SpriteBase::setPosition (glm::vec2 position) 
+{
+	position_ = position;
+}
+
 void SpriteBase::setPosition (int x, int y)
 {
 	position_ = glm::vec2(x, y);
@@ -74,6 +85,11 @@ void SpriteBase::setPositionX (int x)
 void SpriteBase::setPositionY (int y)
 {
 	position_.y = y;
+}
+
+void SpriteBase::setVelocity (glm::vec2 velocity) 
+{
+	velocity_ = velocity;
 }
 
 void SpriteBase::setVelocity (int dx, int dy)
@@ -110,6 +126,11 @@ void SpriteBase::setVisible (bool visible)
 {
 	visible_ = visible;
 }
+		
+void SpriteBase::setDirection (glm::vec2 direction)
+{
+	direction_ = direction;
+}	
 
 /* TEXTURES */
 
@@ -136,4 +157,9 @@ bool SpriteBase::operator == (const Sprite & rhs)
 		return false;
 
 	return true;
+}
+
+bool SpriteBase::operator != (const Sprite & rhs)
+{
+	return !(*this == rhs);
 }

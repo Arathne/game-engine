@@ -14,25 +14,32 @@
 #define WINDOW_HEIGHT 600
 
 void keyboard (void);
+const int speed = 2;
 
 StaticSprite person;	
+StaticSprite box;	
 
 int main()
 {
 	GameRenderer renderer(WINDOW_WIDTH, WINDOW_HEIGHT, "GameEngine");
 	
 	Texture texture(EPIC_FACE);
-	person.setPosition(WINDOW_WIDTH/2-50, WINDOW_HEIGHT/2-50);
 	person.setTexture(texture);	
+	
+	person.setPosition(100, 0);
+	box.setPosition(WINDOW_WIDTH/2-50, WINDOW_HEIGHT/2-50);
 
 	StaticMap level(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 	level.linkTexture(texture);
 	
 	Workspace::addTexture(texture);	
 	Workspace::addSprite(person);	
+	Workspace::addSprite(box);	
 	Workspace::setCurrentMap(level);	
 	
 	renderer.show();
+		
+	person.setVelocity(1, 1);
 	
 	bool run = true;
 	while (run)
@@ -41,7 +48,7 @@ int main()
 		if (Events::hasType(SDL_QUIT))
 			run = false;
 		
-		keyboard();
+		//keyboard();
 
 		renderer.draw();
 	}
@@ -50,19 +57,19 @@ int main()
 void keyboard (void)
 {
 	if (Events::isKeyPressed(SDL_SCANCODE_D)) // d
-		person.setVelocityX(1);
+		person.setVelocityX(speed);
 	else {
 		if (Events::isKeyPressed(SDL_SCANCODE_A)) // a
-			person.setVelocityX(-1);
+			person.setVelocityX(-speed);
 		else
 			person.setVelocityX(0);
 	}
 	
 	if (Events::isKeyPressed(SDL_SCANCODE_S)) // s
-		person.setVelocityY(1);
+		person.setVelocityY(speed);
 	else {
 		if (Events::isKeyPressed(SDL_SCANCODE_W)) // w
-			person.setVelocityY(-1);
+			person.setVelocityY(-speed);
 		else
 			person.setVelocityY(0);
 	}
