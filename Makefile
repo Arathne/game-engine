@@ -5,8 +5,5 @@ compile:
 run:
 	build/engine
 
-valgrind:
-	valgrind build/engine
-
 clean:
 	rm -rf build

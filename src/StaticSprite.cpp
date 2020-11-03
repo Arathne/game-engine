@@ -14,12 +14,12 @@ StaticSprite::~StaticSprite (void) {}
 
 void StaticSprite::setFrame (Texture & texture) 
 {
-	frame_.setTextureId(texture.getId());
+	frame_.setTexture(texture.getId());
 }
 
 void StaticSprite::clearFrame (void) 
 {
-	frame_.setTextureId(0);
+	frame_.removeTexture();
 }
 
 void StaticSprite::setPosition (int x, int y) 

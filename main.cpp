@@ -1,14 +1,14 @@
 #include <iostream>
-
-#include "GameRenderer.h"
-#include "Events.h"
-
-#include "Color.h"
-#include "Workspace.h"
 #include <glm/glm.hpp>
-#include "StaticMap.h"
-#include "Texture.h"
-#include "StaticSprite.h"
+
+#include "src/GameRenderer.h"
+#include "src/Color.h"
+#include "src/Workspace.h"
+#include "src/StaticMap.h"
+#include "src/Texture.h"
+#include "src/StaticSprite.h"
+#include "src/Tile.h"
+#include "src/Events.h"
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 600
@@ -19,6 +19,10 @@ StaticSprite person;
 
 int main()
 {
+	Tile h(1, 2, 3, 4, Color::make(5, 6, 7, 8));
+	
+	std::cout << h.getWidth() << " " << h.getHeight() << std::endl;	
+
 	GameRenderer renderer(WINDOW_WIDTH, WINDOW_HEIGHT, "GameEngine");
 	
 	Texture texture(EPIC_FACE);

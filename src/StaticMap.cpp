@@ -18,12 +18,12 @@ std::vector<Tile*> StaticMap::getTiles (void)
 
 void StaticMap::linkTexture (Texture & texture)
 {
-	image_.setTextureId(texture.getId());
+	image_.setTexture(texture.getId());
 }
 
 void StaticMap::unlinkTexture (void)
 {
-	image_.setTextureId(0);
+	image_.removeTexture();
 }
 
 		
