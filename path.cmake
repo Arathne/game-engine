@@ -7,6 +7,7 @@ set( CPP
 		src/Tile.cpp
 		src/StaticMap.cpp
 		src/Texture.cpp
+		src/SpriteBase.cpp
 		src/StaticSprite.cpp
 		src/Rectangle.cpp
 )

@@ -12,6 +12,7 @@ class Rectangle
 		Rectangle (int width, int height, Color color);
 		~Rectangle (void);
 		
+		glm::vec2 getSize (void) const;	
 		int getHeight (void) const;
 		int getWidth (void) const;
 		Color getColor (void) const;

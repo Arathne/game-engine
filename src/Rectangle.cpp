@@ -3,8 +3,8 @@
 /* CONSTRUCTORS */
 
 Rectangle::Rectangle (void):
-	height_ (50),
-	width_ (50),
+	height_ (100),
+	width_ (100),
 	color_ (Color::make(0, 255, 0, 255)),
 	textureId_(0)
 {}
@@ -19,6 +19,11 @@ Rectangle::Rectangle (int width, int height, Color color):
 Rectangle::~Rectangle (void) {}
 
 /* GETTERS */
+
+glm::vec2 Rectangle::getSize (void) const
+{
+	return glm::vec2(width_, height_);
+}
 
 int Rectangle::getHeight (void) const
 {

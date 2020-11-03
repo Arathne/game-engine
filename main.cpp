@@ -27,7 +27,7 @@ int main()
 	
 	Texture texture(EPIC_FACE);
 	person.setPosition(WINDOW_WIDTH/2-50, WINDOW_HEIGHT/2-50);
-	person.setFrame(texture);	
+	person.setTexture(texture);	
 
 	StaticMap level(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 	level.linkTexture(texture);
