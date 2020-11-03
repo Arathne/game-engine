@@ -19,10 +19,6 @@ StaticSprite person;
 
 int main()
 {
-	Tile h(1, 2, 3, 4, Color::make(5, 6, 7, 8));
-	
-	std::cout << h.getWidth() << " " << h.getHeight() << std::endl;	
-
 	GameRenderer renderer(WINDOW_WIDTH, WINDOW_HEIGHT, "GameEngine");
 	
 	Texture texture(EPIC_FACE);
@@ -53,19 +49,19 @@ int main()
 
 void keyboard (void)
 {
-	if (Events::isKeyPressed(100)) // d
+	if (Events::isKeyPressed(SDL_SCANCODE_D)) // d
 		person.setVelocityX(1);
 	else {
-		if (Events::isKeyPressed(97)) // a
+		if (Events::isKeyPressed(SDL_SCANCODE_A)) // a
 			person.setVelocityX(-1);
 		else
 			person.setVelocityX(0);
 	}
 	
-	if (Events::isKeyPressed(115)) // s
+	if (Events::isKeyPressed(SDL_SCANCODE_S)) // s
 		person.setVelocityY(1);
 	else {
-		if (Events::isKeyPressed(119)) // w
+		if (Events::isKeyPressed(SDL_SCANCODE_W)) // w
 			person.setVelocityY(-1);
 		else
 			person.setVelocityY(0);

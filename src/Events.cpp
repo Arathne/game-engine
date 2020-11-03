@@ -1,7 +1,7 @@
 #include "Events.h"
 
 std::vector<SDL_Event> Events::events_;
-bool Events::keyboard_[130];
+const Uint8* Events::keyboard_ = SDL_GetKeyboardState(nullptr);
 
 void Events::poll (void)
 {
@@ -13,13 +13,6 @@ void Events::poll (void)
 		SDL_Event event;
 		eventLoop = SDL_PollEvent(&event);
 		events_.push_back(event);
-	
-		if (event.type == SDL_KEYUP) {
-			keyboard_[event.key.keysym.sym] = false;
-		}
-		else if (event.type == SDL_KEYDOWN) {
-			keyboard_[event.key.keysym.sym] = true;
-		}
 	}
 }
 
@@ -29,16 +22,12 @@ bool Events::hasType (SDL_EventType event)
 	{
 		if (it->type == event)
 			return true;
-	
 	}
 
 	return false;
 }
 
-bool Events::isKeyPressed (int ascii)
+bool Events::isKeyPressed (SDL_Scancode code)
 {
-	if (ascii >= 0 && ascii < 130)
-		return keyboard_[ascii];
-
-	return false;
+	return keyboard_[code];
 }
