@@ -10,11 +10,11 @@ class Events
 	public:
 		static void poll (void);		
 		static bool hasType (SDL_EventType event);		
-		static bool isKeyPressed (int ascii);
+		static bool isKeyPressed (SDL_Scancode code);
 
 	private:
 		static std::vector<SDL_Event> events_;
-		static bool keyboard_[130];
+		static const Uint8* keyboard_;
 };
 
 #endif

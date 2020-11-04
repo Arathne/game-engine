@@ -11,8 +11,8 @@
 #include "Workspace.h"
 #include "Texture.h"
 #include "Map.h"
+#include "Rectangle.h"
 #include "Tile.h"
-#include "Scene.h"
 #include "Color.h"
 
 class GameRenderer

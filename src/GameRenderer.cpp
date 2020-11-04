@@ -112,9 +112,9 @@ void GameRenderer::drawSprites (void) const
 	
 	for (auto it = sprites.begin(); it != sprites.end(); it++)
 	{
-		Tile frame = (**it).getFrame();
+		Rectangle frame = (**it).getFrame();
 		
-		glm::vec2 position = frame.getPosition();
+		glm::vec2 position = (**it).getPosition();
 		Color color = frame.getColor();
 		
 		SDL_Rect rectangle;

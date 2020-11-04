@@ -4,7 +4,7 @@
 #include <vector>
 #include "Map.h"
 #include "Sprite.h"
-#include <iostream>
+#include "Collision.h"
 
 class Workspace
 {
