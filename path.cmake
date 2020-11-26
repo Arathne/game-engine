@@ -11,4 +11,5 @@ set( CPP
 		src/StaticSprite.cpp
 		src/Rectangle.cpp
 		src/Collision.cpp
+		src/FPS.cpp
 )

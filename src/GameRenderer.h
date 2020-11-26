@@ -9,6 +9,7 @@
 #include <vector>
 
 #include "Workspace.h"
+#include "FPS.h"
 #include "Texture.h"
 #include "Map.h"
 #include "Rectangle.h"

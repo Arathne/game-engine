@@ -72,6 +72,8 @@ void GameRenderer::draw (void)
 
 	SDL_RenderPresent( renderer_ );
 	Workspace::tick();
+	
+	FPS::check();
 }
 
 void GameRenderer::drawMap (void)
@@ -172,7 +174,7 @@ void GameRenderer::loadTexture (Texture & texture)
 		loadedTextures_.push_back(newLoadedTexture);
 		textures_.push_back(&texture);
 	
-		std::cout << "loaded texture :: " << texture.getPath() << "::" << texture.getId() << std::endl;
+		std::cout << "loaded texture :: " << texture.getPath() << " :: " << texture.getId() << std::endl;
 
 		SDL_FreeSurface(surface);
 	}
