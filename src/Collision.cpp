@@ -60,9 +60,9 @@ void Collision::bounce (Sprite & sprite)
 	glm::vec2 size = sprite.getSize();
 	glm::vec2 velocity = sprite.getVelocity();
 
-	if (position.x + size.x > 600)
+	if (position.x + size.x > 1280)
 	{
-		position.x = 600 - size.x;
+		position.x = 1280 - size.x;
 		velocity.x = velocity.x * -1.0f;
 	}
 	else if (position.x < 0)
@@ -71,9 +71,9 @@ void Collision::bounce (Sprite & sprite)
 		velocity.x = velocity.x * -1.0f;
 	}
 	
-	if (position.y + size.y > 600)
+	if (position.y + size.y > 720)
 	{
-		position.y = 600 - size.y;
+		position.y = 720 - size.y;
 		velocity.y = velocity.y * -1.0f;
 	}
 	else if (position.y < 0)

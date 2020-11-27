@@ -13,13 +13,11 @@
 
 #include "src/FPS.h"
 
-#define WINDOW_WIDTH 600
-#define WINDOW_HEIGHT 600
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGHT 720
 
 void keyboard (void);
 const int speed = 2;
-
-StaticSprite person;	
 
 int main()
 {
@@ -27,19 +25,14 @@ int main()
 	GameRenderer renderer(WINDOW_WIDTH, WINDOW_HEIGHT, "GameEngine");
 	
 	Texture texture(EPIC_FACE);
-	person.setTexture(texture);	
 	
-	person.setPosition(100, 0);
 	TileMap level;
 	
 	Workspace::addTexture(texture);	
-	Workspace::addSprite(person);	
 	Workspace::setCurrentMap(level);	
 	
 	renderer.show();
 		
-	person.setVelocity(2, 2);
-	
 	bool run = true;
 	while (run)
 	{
@@ -47,13 +40,11 @@ int main()
 		if (Events::hasType(SDL_QUIT))
 			run = false;
 		
-		//keyboard();
-
 		renderer.draw();
 	}
 }
 
-void keyboard (void)
+/*void keyboard (void)
 {
 	if (Events::isKeyPressed(SDL_SCANCODE_D)) // d
 		person.setVelocityX(speed);
@@ -72,4 +63,4 @@ void keyboard (void)
 		else
 			person.setVelocityY(0);
 	}
-}
+}*/
