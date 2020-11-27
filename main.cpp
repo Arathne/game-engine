@@ -12,10 +12,12 @@
 #include "src/Events.h"
 
 #include "src/FPS.h"
+#include "src/Camera.h"
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
 
+Camera camera (157, 38, 5);
 void keyboard (void);
 const int speed = 2;
 
@@ -28,15 +30,19 @@ int main()
 	
 	TileMap level;
 	
-	Workspace::addTexture(texture);	
+	//Workspace::addTexture(texture);	
 	Workspace::setCurrentMap(level);	
-	
+	Workspace::setCamera(camera);
+
 	renderer.show();
 		
 	bool run = true;
 	while (run)
 	{
 		Events::poll();
+		
+		keyboard();
+		
 		if (Events::hasType(SDL_QUIT))
 			run = false;
 		
@@ -44,23 +50,19 @@ int main()
 	}
 }
 
-/*void keyboard (void)
+void keyboard (void)
 {
 	if (Events::isKeyPressed(SDL_SCANCODE_D)) // d
-		person.setVelocityX(speed);
+		camera.move(RIGHT);
 	else {
 		if (Events::isKeyPressed(SDL_SCANCODE_A)) // a
-			person.setVelocityX(-speed);
-		else
-			person.setVelocityX(0);
+			camera.move(LEFT);
 	}
 	
 	if (Events::isKeyPressed(SDL_SCANCODE_S)) // s
-		person.setVelocityY(speed);
+		camera.move(DOWN);
 	else {
 		if (Events::isKeyPressed(SDL_SCANCODE_W)) // w
-			person.setVelocityY(-speed);
-		else
-			person.setVelocityY(0);
+			camera.move(UP);
 	}
-}*/
+}

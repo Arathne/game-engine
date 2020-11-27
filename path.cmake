@@ -13,4 +13,5 @@ set( CPP
 		src/Collision.cpp
 		src/FPS.cpp
 		src/TileMap.cpp
+		src/Camera.cpp
 )

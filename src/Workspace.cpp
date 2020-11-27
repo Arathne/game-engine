@@ -1,6 +1,7 @@
 #include "Workspace.h"
 
 Map* Workspace::currentMap_ = nullptr;
+Camera* Workspace::camera_;
 std::vector<Texture*> Workspace::textures_;
 std::vector<Sprite*> Workspace::sprites_;
 
@@ -122,4 +123,14 @@ void Workspace::tick (void)
 		Sprite* current = *it;
 		current-> update();
 	}
+}
+
+void Workspace::setCamera (Camera & camera)
+{
+	camera_ = &camera;
+}
+
+Camera & Workspace::getCamera (void)
+{
+	return *camera_;
 }

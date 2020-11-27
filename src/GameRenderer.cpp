@@ -83,12 +83,16 @@ void GameRenderer::drawMap (void)
 	if (currentMap != nullptr)
 	{
 		std::vector<Tile*> tiles = currentMap-> getTiles();
-		
+		Camera camera = Workspace::getCamera();
+		glm::vec2 position = camera.getPosition();
+		glm::mat3 transform = camera.getTransform();		
+
  		for (auto it = tiles.begin(); it != tiles.end(); it++ )
 		{
 			Tile current = **it;
 			
-			glm::vec2 position = current.getPosition();
+			glm::vec3 position = transform * glm::vec3((float) current.getPosition().x, (float) current.getPosition().y, 1.0f);
+
 			Color color = current.getColor();
 			
 			SDL_Rect rectangle;

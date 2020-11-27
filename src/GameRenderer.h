@@ -7,6 +7,7 @@
 #include <SDL2/SDL_image.h>
 #include <stdexcept>
 #include <vector>
+#include <glm/gtx/matrix_transform_2d.hpp>
 
 #include "Workspace.h"
 #include "FPS.h"
@@ -15,6 +16,7 @@
 #include "Rectangle.h"
 #include "Tile.h"
 #include "Color.h"
+#include "Camera.h"
 
 class GameRenderer
 {

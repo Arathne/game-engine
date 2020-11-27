@@ -5,6 +5,7 @@
 #include "Map.h"
 #include "Sprite.h"
 #include "Collision.h"
+#include "Camera.h"
 
 class Workspace
 {
@@ -17,6 +18,9 @@ class Workspace
 		static std::vector<Texture*> & getTextures (void);
 		static void removeTexture (Texture & texture);		
 		
+		static void setCamera (Camera & camera);
+		static Camera & getCamera (void);
+
 		static void addSprite (Sprite & sprite);
 		static void removeSprite (Sprite & sprite);
 		static std::vector<Sprite*> & getSprites (void);
@@ -27,6 +31,7 @@ class Workspace
 		static Map* currentMap_;
 		static std::vector<Texture*> textures_;
 		static std::vector<Sprite*> sprites_;
+		static Camera* camera_;
 };
 
 #endif
