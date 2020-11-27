@@ -2,19 +2,19 @@
 #define TILE_MAP_H
 
 #include <glm/glm.hpp>
+#include <fstream>
+#include <iostream>
 
 #include "Tile.h"
 #include "Map.h"
-#include <iostream>
 
 class TileMap : public Map
 {
 	public:
 		TileMap (void);		
-		TileMap (int row, int col, int tileSize);		
+		TileMap (int tileSize);		
 		~TileMap (void);
 		
-		void generate (void);		
 		std::vector<Tile*> getTiles (void);
 
 	private:

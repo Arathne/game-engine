@@ -17,7 +17,7 @@
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
 
-Camera camera (157, 38, 5);
+Camera camera (122.5, 38, 5);
 void keyboard (void);
 const int speed = 2;
 
@@ -27,7 +27,6 @@ int main()
 	GameRenderer renderer(WINDOW_WIDTH, WINDOW_HEIGHT, "GameEngine");
 	
 	Texture texture(EPIC_FACE);
-	
 	TileMap level;
 	
 	//Workspace::addTexture(texture);	
@@ -45,7 +44,7 @@ int main()
 		
 		if (Events::hasType(SDL_QUIT))
 			run = false;
-		
+		//std::cout << FPS::getFramesPerSecond() << std::endl;
 		renderer.draw();
 	}
 }

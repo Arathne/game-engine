@@ -23,3 +23,5 @@ target_include_directories( engine PUBLIC ${SDL2_INCLUDE_DIRS} )
 
 target_compile_options( engine PUBLIC ${SDL2_CFLAGS_OTHER} )
 target_compile_definitions( engine PRIVATE EPIC_FACE="${CMAKE_CURRENT_SOURCE_DIR}/assets/epicface.png" )
+target_compile_definitions( engine PRIVATE MAP_TID="${CMAKE_CURRENT_SOURCE_DIR}/assets/world.tid" )
+target_compile_definitions( engine PRIVATE MAP_TM="${CMAKE_CURRENT_SOURCE_DIR}/assets/world.tm" )
