@@ -12,4 +12,5 @@ set( CPP
 		src/Rectangle.cpp
 		src/Collision.cpp
 		src/FPS.cpp
+		src/TileMap.cpp
 )

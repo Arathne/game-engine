@@ -5,10 +5,13 @@
 #include "src/Color.h"
 #include "src/Workspace.h"
 #include "src/StaticMap.h"
+#include "src/TileMap.h"
 #include "src/Texture.h"
 #include "src/StaticSprite.h"
 #include "src/Tile.h"
 #include "src/Events.h"
+
+#include "src/FPS.h"
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 600
@@ -17,29 +20,25 @@ void keyboard (void);
 const int speed = 2;
 
 StaticSprite person;	
-StaticSprite box;	
 
 int main()
 {
+	FPS::setMaxFramerate(60);
 	GameRenderer renderer(WINDOW_WIDTH, WINDOW_HEIGHT, "GameEngine");
 	
 	Texture texture(EPIC_FACE);
 	person.setTexture(texture);	
 	
 	person.setPosition(100, 0);
-	box.setPosition(WINDOW_WIDTH/2-50, WINDOW_HEIGHT/2-50);
-
-	StaticMap level(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-	level.linkTexture(texture);
+	TileMap level;
 	
 	Workspace::addTexture(texture);	
 	Workspace::addSprite(person);	
-	Workspace::addSprite(box);	
 	Workspace::setCurrentMap(level);	
 	
 	renderer.show();
 		
-	person.setVelocity(1, 1);
+	person.setVelocity(2, 2);
 	
 	bool run = true;
 	while (run)
