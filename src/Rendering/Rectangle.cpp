@@ -68,6 +68,11 @@ void Rectangle::setColor (Color color)
 	color_ = color;
 }
 
+void Rectangle::setColor (int r, int g, int b, int a)
+{
+	color_ = Color::make(r, g, b, a);
+}
+
 void Rectangle::setTexture (unsigned int id)
 {
 	textureId_ = id;

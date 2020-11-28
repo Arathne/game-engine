@@ -11,6 +11,18 @@ SpriteBase::SpriteBase (void):
 	direction_ (glm::vec2(0, 0))
 {}
 
+SpriteBase::SpriteBase (int x, int y, int w, int h):
+	id_ (++spriteIdCounter_),
+	visible_ (true),
+	position_ (glm::vec2(x, y)),
+	velocity_ (glm::vec2(0, 0)),
+	acceleration_ (glm::vec2(0, 0)),
+	direction_ (glm::vec2(0, 0))
+{
+	frame_.setSize(w, h);
+}
+
+
 SpriteBase::~SpriteBase (void) {}
 
 /* GETTERS */
@@ -131,6 +143,12 @@ void SpriteBase::setDirection (glm::vec2 direction)
 {
 	direction_ = direction;
 }	
+
+void SpriteBase::setColor (int r, int g, int b, int a)
+{
+	frame_.setColor(r, g, b, a);
+}
+			
 
 /* TEXTURES */
 

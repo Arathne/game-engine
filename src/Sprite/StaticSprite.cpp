@@ -3,6 +3,10 @@
 #define STATIC_SPRITE_TYPE 0
 
 StaticSprite::StaticSprite (void) {}
+		
+StaticSprite::StaticSprite (int x, int y, int w, int h):
+	SpriteBase(x, y, w, h)
+{}
 
 StaticSprite::~StaticSprite (void) {}
 		

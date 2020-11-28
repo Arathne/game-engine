@@ -1,5 +1,7 @@
 #include "Game.h"
 
+#define BASE_LIMIT 5
+
 Game::Game (void)
 {
 	Player* player1 = new Player();
@@ -35,4 +37,19 @@ bool Game::withinRegion (int x, int y, int player)
 void Game::addToRegion (Tile & tile, int player)
 {
 	players_.at(player)-> addRegion(tile);
+}
+
+void Game::addBase (Sprite & base, int player)
+{
+	players_.at(player)-> addBase(base);
+}
+
+int Game::totalBases (int player)
+{
+	return players_.at(player)-> totalBases();
+}
+
+bool Game::canAddBases (int player)
+{
+	return (Game::totalBases(player) < BASE_LIMIT);
 }

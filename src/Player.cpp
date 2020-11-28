@@ -6,6 +6,7 @@ Player::~Player (void) {}
 		
 void Player::addBase (Sprite & sprite)
 {
+	Workspace::addSprite(sprite);
 	bases_.push_back(&sprite);
 }
 
@@ -22,4 +23,9 @@ std::vector<Sprite*> & Player::getBases (void)
 std::vector<Tile*> & Player::getRegion (void)
 {
 	return region_;
+}
+
+int Player::totalBases (void)
+{
+	return bases_.size();
 }

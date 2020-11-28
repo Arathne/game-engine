@@ -6,6 +6,7 @@
 #include "../Misc/Events.h"
 #include "../Rendering/Workspace.h"
 #include "../WorldMap.h"
+#include "../Sprite/StaticSprite.h"
 
 class Node
 {

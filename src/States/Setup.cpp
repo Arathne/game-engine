@@ -7,7 +7,10 @@ Setup::~Setup (void) {}
 
 Node* Setup::process (Game & game)
 {
-	if (Events::hasType(SDL_MOUSEBUTTONDOWN)) {
+	Node* nextState = this;
+	bool canAdd = game.canAddBases(0);
+
+	if (Events::hasType(SDL_MOUSEBUTTONDOWN) && canAdd) {
 		int x;
 		int y;
 		Events::getMousePosition(&x, &y);
@@ -19,11 +22,17 @@ Node* Setup::process (Game & game)
 		
 		bool isClickInRegion = game.withinRegion(position.x, position.y, 0);
 		
-		if (isClickInRegion)
+		if (isClickInRegion) {
+			int size = 10;
+			StaticSprite* sprite = new StaticSprite(position.x - (size/2), position.y - (size/2), size, size);
+			game.addBase(*sprite, 0);
 			std::cout << "click is in region" << std::endl;
-
-		std::cout << position.x << "   " << position.y << std::endl;
+		}	
 	}
-		
-	return this;
+
+	if (canAdd == false) {
+
+	}
+				
+	return nextState;
 }

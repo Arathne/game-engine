@@ -5,6 +5,7 @@
 
 #include "Sprite/StaticSprite.h"
 #include "Rendering/Tile.h"
+#include "Rendering/Workspace.h"
 
 class Player
 {
@@ -17,6 +18,8 @@ class Player
 		
 		std::vector<Sprite*> & getBases (void);
 		std::vector<Tile*> & getRegion (void);
+		
+		int totalBases (void);
 
 	private:
 		std::vector<Sprite*> bases_;

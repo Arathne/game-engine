@@ -146,9 +146,10 @@ void GameRenderer::drawSprites (void) const
 		Rectangle frame = (**it).getFrame();
 		
 		glm::vec2 position = (**it).getPosition();
-		Color color = frame.getColor();
 		
-		SDL_Rect rectangle;
+		GameRenderer::drawRectangle((float)position.x, (float)position.y, frame.getWidth(), frame.getHeight(), frame.getColor(), frame.getTextureId());
+
+		/*SDL_Rect rectangle;
 		rectangle.x = position.x;
 		rectangle.y = position.y;
 		rectangle.w = frame.getWidth();
@@ -160,7 +161,7 @@ void GameRenderer::drawSprites (void) const
 		if (textureIndex < 0)
 			SDL_RenderFillRect( renderer_, &rectangle );
 		else
-			SDL_RenderCopy( renderer_, loadedTextures_.at(textureIndex), nullptr, &rectangle );
+			SDL_RenderCopy( renderer_, loadedTextures_.at(textureIndex), nullptr, &rectangle );*/
 	}
 }	
 

@@ -11,9 +11,13 @@ class Game
 	public:
 		Game (void);
 		~Game (void);
+		
 		bool withinRegion (int x, int y, int player);
 		void addToRegion (Tile & tile, int player);
+		void addBase (Sprite & sprite, int player);
 		
+		int totalBases (int player);
+		bool canAddBases (int player);		
 
 	private:
 		std::vector<Player*> players_;

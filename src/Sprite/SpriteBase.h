@@ -7,6 +7,7 @@ class SpriteBase : public Sprite
 {
 	public:
 		SpriteBase (void);
+		SpriteBase (int x, int y, int w, int h);
 		~SpriteBase (void);
 		
 		glm::vec2 getPosition (void) const;
@@ -47,6 +48,7 @@ class SpriteBase : public Sprite
 		
 		void setVelocity (glm::vec2 velocity);
 		void setPosition (glm::vec2 position);		
+		void setColor (int r, int g, int b, int a);		
 
 	private:
 		static unsigned int spriteIdCounter_;

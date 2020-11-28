@@ -7,6 +7,7 @@ class StaticSprite : public SpriteBase
 {
 	public:
 		StaticSprite (void);
+		StaticSprite (int x, int y, int w, int h);
 		~StaticSprite (void);
 		
 		int getType (void) const;

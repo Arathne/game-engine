@@ -23,6 +23,7 @@ class Rectangle
 		void setHeight (int height);
 		void setWidth (int width);
 		void setColor (Color color);
+		void setColor (int r, int g, int b, int a);
 
 		void setTexture (unsigned int id);
 		void setTexture (Texture texture);
