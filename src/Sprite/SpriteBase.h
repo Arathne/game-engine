@@ -1,7 +1,6 @@
 #ifndef SPRITE_BASE_H
 #define SPRITE_BASE_H
 
-#include <glm/glm.hpp>
 #include "Sprite.h"
 
 class SpriteBase : public Sprite

@@ -1,26 +1,26 @@
-#include "TileMap.h"
+#include "WorldMap.h"
 
 #define DEFAULT_ROWS 0
 #define DEFAULT_COLUMNS 0
 #define DEFAULT_TILE_SIZE 23
 
-TileMap::TileMap():
+WorldMap::WorldMap():
 	rows_(DEFAULT_ROWS),
 	columns_(DEFAULT_COLUMNS),
 	tileSize_(DEFAULT_TILE_SIZE)
 {
-	TileMap::initializeMap();
+	WorldMap::initializeMap();
 }
 
-TileMap::TileMap (int tileSize): 
+WorldMap::WorldMap (int tileSize): 
 	tileSize_(tileSize)
 {
-	TileMap::initializeMap();
+	WorldMap::initializeMap();
 }
 
-TileMap::~TileMap() {}
+WorldMap::~WorldMap() {}
 
-void TileMap::initializeMap (void)
+void WorldMap::initializeMap (void)
 {
 	std::ifstream buffer;
 	
@@ -47,7 +47,7 @@ void TileMap::initializeMap (void)
 	}
 }
 
-std::vector<Tile*> TileMap::getTiles (void)
+std::vector<Tile*> WorldMap::getTiles (void)
 {
 	std::vector<Tile*> tiles;
 	

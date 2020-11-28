@@ -1,17 +1,16 @@
 set( CPP
 		main.cpp
-		src/GameRenderer.cpp
-		src/Events.cpp
-		src/Color.cpp
-		src/Workspace.cpp
-		src/Tile.cpp
-		src/StaticMap.cpp
-		src/Texture.cpp
-		src/SpriteBase.cpp
-		src/StaticSprite.cpp
-		src/Rectangle.cpp
-		src/Collision.cpp
-		src/FPS.cpp
-		src/TileMap.cpp
-		src/Camera.cpp
+		src/Rendering/GameRenderer.cpp
+		src/Misc/Events.cpp
+		src/Misc/Color.cpp
+		src/Rendering/Workspace.cpp
+		src/Rendering/Tile.cpp
+		src/Rendering/Texture.cpp
+		src/Sprite/SpriteBase.cpp
+		src/Sprite/StaticSprite.cpp
+		src/Rendering/Rectangle.cpp
+		src/Rendering/Collision.cpp
+		src/Rendering/FPS.cpp
+		src/WorldMap.cpp
+		src/Misc/Camera.cpp
 )

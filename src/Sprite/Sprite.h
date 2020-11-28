@@ -1,9 +1,10 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#include "Rectangle.h"
-#include "Texture.h"
 #include <glm/glm.hpp>
+
+#include "../Rendering/Rectangle.h"
+#include "../Rendering/Texture.h"
 
 class Sprite
 {

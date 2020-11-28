@@ -3,8 +3,8 @@
 
 #include <vector>
 #include <glm/glm.hpp>
-#include "Sprite.h"
-#include <iostream>
+
+#include "../Sprite/Sprite.h"
 
 class Collision
 {

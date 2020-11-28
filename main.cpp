@@ -1,18 +1,14 @@
 #include <iostream>
 #include <glm/glm.hpp>
 
-#include "src/GameRenderer.h"
-#include "src/Color.h"
-#include "src/Workspace.h"
-#include "src/StaticMap.h"
-#include "src/TileMap.h"
-#include "src/Texture.h"
-#include "src/StaticSprite.h"
-#include "src/Tile.h"
-#include "src/Events.h"
-
-#include "src/FPS.h"
-#include "src/Camera.h"
+#include "src/Rendering/GameRenderer.h"
+#include "src/Rendering/Workspace.h"
+#include "src/Rendering/Texture.h"
+#include "src/Sprite/StaticSprite.h"
+#include "src/WorldMap.h"
+#include "src/Misc/Events.h"
+#include "src/Rendering/FPS.h"
+#include "src/Misc/Camera.h"
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
@@ -23,13 +19,10 @@ const int speed = 2;
 
 int main()
 {
-	FPS::setMaxFramerate(60);
 	GameRenderer renderer(WINDOW_WIDTH, WINDOW_HEIGHT, "GameEngine");
 	
-	Texture texture(EPIC_FACE);
-	TileMap level;
+	WorldMap level;
 	
-	//Workspace::addTexture(texture);	
 	Workspace::setCurrentMap(level);	
 	Workspace::setCamera(camera);
 
@@ -44,7 +37,7 @@ int main()
 		
 		if (Events::hasType(SDL_QUIT))
 			run = false;
-		//std::cout << FPS::getFramesPerSecond() << std::endl;
+		
 		renderer.draw();
 	}
 }

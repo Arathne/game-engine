@@ -1,6 +1,6 @@
 #include "FPS.h"
 
-unsigned int FPS::framerate_ = 120;
+unsigned int FPS::framerate_ = 60;
 unsigned int FPS::fps_ = 0;
 unsigned int FPS::frameCounter_ = 0;
 unsigned int FPS::lastFrameTime_ = 0;

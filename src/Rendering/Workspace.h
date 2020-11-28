@@ -2,10 +2,11 @@
 #define WORKSPACE_H
 
 #include <vector>
+
 #include "Map.h"
-#include "Sprite.h"
 #include "Collision.h"
-#include "Camera.h"
+#include "../Sprite/Sprite.h"
+#include "../Misc/Camera.h"
 
 class Workspace
 {

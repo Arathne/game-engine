@@ -15,8 +15,8 @@
 #include "Map.h"
 #include "Rectangle.h"
 #include "Tile.h"
-#include "Color.h"
-#include "Camera.h"
+#include "../Misc/Color.h"
+#include "../Misc/Camera.h"
 
 class GameRenderer
 {

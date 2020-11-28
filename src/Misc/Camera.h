@@ -3,7 +3,6 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtx/matrix_transform_2d.hpp>
-#include <iostream>
 
 enum DIRECTION {
 	UP,

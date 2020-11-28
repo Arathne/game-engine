@@ -2,7 +2,8 @@
 #define RECTANGLE_H
 
 #include <glm/glm.hpp>
-#include "Color.h"
+
+#include "../Misc/Color.h"
 #include "Texture.h"
 
 class Rectangle

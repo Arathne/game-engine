@@ -1,19 +1,19 @@
-#ifndef TILE_MAP_H
-#define TILE_MAP_H
+#ifndef WORLD_MAP_H
+#define WORLD_MAP_H
 
 #include <glm/glm.hpp>
 #include <fstream>
 #include <iostream>
 
-#include "Tile.h"
-#include "Map.h"
+#include "Rendering/Tile.h"
+#include "Rendering/Map.h"
 
-class TileMap : public Map
+class WorldMap : public Map
 {
 	public:
-		TileMap (void);		
-		TileMap (int tileSize);		
-		~TileMap (void);
+		WorldMap (void);		
+		WorldMap (int tileSize);		
+		~WorldMap (void);
 		
 		std::vector<Tile*> getTiles (void);
 
