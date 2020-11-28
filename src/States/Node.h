@@ -1,15 +1,17 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include <iostream>
+
 #include "../Misc/Events.h"
 #include "../Rendering/Workspace.h"
-#include <iostream>
+#include "../WorldMap.h"
 
 class Node
 {
 	public:
 		virtual ~Node (void)	{};
-		virtual Node* process (void) = 0;
+		virtual Node* process (Game & game) = 0;
 };
 
 #endif

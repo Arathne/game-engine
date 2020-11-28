@@ -11,7 +11,7 @@ class StateManager
 		StateManager (void);
 		~StateManager (void);
 
-		void process (void);		
+		void process (Game & game);		
 
 	private:
 		Node* state_;

@@ -22,10 +22,13 @@ const int speed = 2;
 int main()
 {
 	GameRenderer renderer(WINDOW_WIDTH, WINDOW_HEIGHT, "GameEngine");
+	
+	Game game;
 	StateManager states;	
 
 	WorldMap level;
-	
+	level.initializeMap(game);
+
 	Workspace::setCurrentMap(level);	
 	Workspace::setCamera(camera);
 
@@ -41,7 +44,7 @@ int main()
 		
 		keyboard();
 		
-		states.process();
+		states.process(game);
 
 		renderer.draw();
 	}

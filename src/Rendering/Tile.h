@@ -12,9 +12,13 @@ class Tile : public Rectangle
 	
 		glm::vec2 getPosition (void) const;			
 		void setPosition (int x, int y);
+		
+		void setTeam (int team);
+		int getTeam (void) const;
 
 	private:
 		glm::vec2 position_;
+		int team_;
 };
 
 #endif

@@ -7,19 +7,18 @@
 
 #include "Rendering/Tile.h"
 #include "Rendering/Map.h"
+#include "Game.h"
 
 class WorldMap : public Map
 {
 	public:
 		WorldMap (void);		
-		WorldMap (int tileSize);		
 		~WorldMap (void);
 		
 		std::vector<Tile*> getTiles (void);
-
+		void initializeMap (Game & game);		
+	
 	private:
-		void initializeMap (void);		
-
 		int rows_;
 		int columns_;
 		int tileSize_;

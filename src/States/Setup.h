@@ -9,7 +9,7 @@ class Setup : public Node
 		Setup (void);
 		~Setup (void);
 
-		Node* process (void);
+		Node* process (Game & game);
 };
 
 #endif

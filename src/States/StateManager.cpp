@@ -8,10 +8,10 @@ StateManager::StateManager (void)
 
 StateManager::~StateManager (void) {}
 
-void StateManager::process (void) 
+void StateManager::process (Game & game) 
 {
 	Node* current = state_;
-	state_ = current-> process();
+	state_ = current-> process(game);
 	
 	if (current != state_)
 		delete current;

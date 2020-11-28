@@ -15,4 +15,6 @@ set( CPP
 		src/Misc/Camera.cpp
 		src/States/StateManager.cpp
 		src/States/Setup.cpp
+		src/Player.cpp
+		src/Game.cpp
 )

@@ -8,19 +8,11 @@ WorldMap::WorldMap():
 	rows_(DEFAULT_ROWS),
 	columns_(DEFAULT_COLUMNS),
 	tileSize_(DEFAULT_TILE_SIZE)
-{
-	WorldMap::initializeMap();
-}
-
-WorldMap::WorldMap (int tileSize): 
-	tileSize_(tileSize)
-{
-	WorldMap::initializeMap();
-}
+{}
 
 WorldMap::~WorldMap() {}
 
-void WorldMap::initializeMap (void)
+void WorldMap::initializeMap (Game & game)
 {
 	std::ifstream textureBuffer;
 	std::ifstream teamBuffer;
@@ -44,11 +36,16 @@ void WorldMap::initializeMap (void)
 			map_[i][j].setPosition(j*tileSize_, i*tileSize_);
 			map_[i][j].setSize(tileSize_, tileSize_);
 			map_[i][j].setTexture(texture);
-			
-			if (team == 1)
+			map_[i][j].setTeam(team);			
+
+			if (team == 1) {
 				map_[i][j].setColor(Color::make(0,0,255,255));
-			else if (team == 2)
+				game.addToRegion(map_[i][j], 0);
+			}
+			else if (team == 2) {
 				map_[i][j].setColor(Color::make(255,0,0,255));
+				game.addToRegion(map_[i][j], 1);
+			}
 		}
 	}
 }
