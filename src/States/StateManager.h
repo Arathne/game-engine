@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "Setup.h"
+#include "SetupPlayer.h"
 
 class StateManager
 {

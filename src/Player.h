@@ -2,6 +2,9 @@
 #define PLAYER_H
 
 #include <vector>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "Sprite/StaticSprite.h"
 #include "Rendering/Tile.h"
@@ -20,6 +23,7 @@ class Player
 		std::vector<Tile*> & getRegion (void);
 		
 		int totalBases (void);
+		void addRandomBase (void);
 
 	private:
 		std::vector<Sprite*> bases_;

@@ -2,7 +2,7 @@
 
 StateManager::StateManager (void) 
 {
-	Setup* setup = new Setup();
+	SetupPlayer* setup = new SetupPlayer();
 	state_ = setup;
 }
 

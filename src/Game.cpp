@@ -53,3 +53,8 @@ bool Game::canAddBases (int player)
 {
 	return (Game::totalBases(player) < BASE_LIMIT);
 }
+
+void Game::addRandomBase (int player)
+{
+	players_.at(player)-> addRandomBase();
+}

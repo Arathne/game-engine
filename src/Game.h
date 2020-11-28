@@ -18,6 +18,7 @@ class Game
 		
 		int totalBases (int player);
 		bool canAddBases (int player);		
+		void addRandomBase (int player);
 
 	private:
 		std::vector<Player*> players_;

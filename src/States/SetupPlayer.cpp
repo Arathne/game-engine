@@ -1,11 +1,11 @@
-#include "Setup.h"
+#include "SetupPlayer.h"
 
-Setup::Setup (void)
+SetupPlayer::SetupPlayer (void)
 {}
 
-Setup::~Setup (void) {}
+SetupPlayer::~SetupPlayer (void) {}
 
-Node* Setup::process (Game & game)
+Node* SetupPlayer::process (Game & game)
 {
 	Node* nextState = this;
 	bool canAdd = game.canAddBases(0);
@@ -26,12 +26,12 @@ Node* Setup::process (Game & game)
 			int size = 10;
 			StaticSprite* sprite = new StaticSprite(position.x - (size/2), position.y - (size/2), size, size);
 			game.addBase(*sprite, 0);
-			std::cout << "click is in region" << std::endl;
 		}	
 	}
 
 	if (canAdd == false) {
-
+		nextState = new SetupComputer();
+		std::cout << "state change :: computer picking bases" << std::endl; 
 	}
 				
 	return nextState;

@@ -14,7 +14,8 @@ set( CPP
 		src/WorldMap.cpp
 		src/Misc/Camera.cpp
 		src/States/StateManager.cpp
-		src/States/Setup.cpp
+		src/States/SetupPlayer.cpp
 		src/Player.cpp
 		src/Game.cpp
+		src/States/SetupComputer.cpp
 )
