@@ -10,6 +10,8 @@
 #include "src/Rendering/FPS.h"
 #include "src/Misc/Camera.h"
 
+#include "src/States/StateManager.h"
+
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
 
@@ -20,24 +22,27 @@ const int speed = 2;
 int main()
 {
 	GameRenderer renderer(WINDOW_WIDTH, WINDOW_HEIGHT, "GameEngine");
-	
+	StateManager states;	
+
 	WorldMap level;
 	
 	Workspace::setCurrentMap(level);	
 	Workspace::setCamera(camera);
 
 	renderer.show();
-		
+	
 	bool run = true;
 	while (run)
 	{
 		Events::poll();
 		
-		keyboard();
-		
 		if (Events::hasType(SDL_QUIT))
 			run = false;
 		
+		keyboard();
+		
+		states.process();
+
 		renderer.draw();
 	}
 }

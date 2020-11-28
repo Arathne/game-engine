@@ -18,8 +18,7 @@ void Events::poll (void)
 
 bool Events::hasType (SDL_EventType event)
 {
- 	for (auto it = events_.begin(); it != events_.end(); it++ )
-	{
+ 	for (auto it = events_.begin(); it != events_.end(); it++ ) {
 		if (it->type == event)
 			return true;
 	}
@@ -30,4 +29,9 @@ bool Events::hasType (SDL_EventType event)
 bool Events::isKeyPressed (SDL_Scancode code)
 {
 	return keyboard_[code];
+}
+
+void Events::getMousePosition (int* x, int* y)
+{
+	SDL_GetMouseState(x, y);
 }

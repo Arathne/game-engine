@@ -22,26 +22,32 @@ WorldMap::~WorldMap() {}
 
 void WorldMap::initializeMap (void)
 {
-	std::ifstream buffer;
+	std::ifstream textureBuffer;
+	std::ifstream teamBuffer;
 	
-	buffer.open(MAP_TID);
-	buffer >> rows_;
-	buffer >> columns_;
+	textureBuffer.open(MAP_TID);
+	teamBuffer.open(MAP_TM);
+	
+	teamBuffer >> rows_;
+	teamBuffer >> columns_;
 	
 	map_.resize(rows_, std::vector<Tile>(columns_));
 	
 	for (int i = 0; i < rows_; i++) {
 		for (int j = 0; j < columns_; j++) {
-			int data;
-			buffer >> data;			
+			int texture;
+			int team;
+			
+			textureBuffer >> texture;			
+			teamBuffer >> team;			
 
 			map_[i][j].setPosition(j*tileSize_, i*tileSize_);
 			map_[i][j].setSize(tileSize_, tileSize_);
-			map_[i][j].setTexture(data);
+			map_[i][j].setTexture(texture);
 			
-			if (data == 1)
+			if (team == 1)
 				map_[i][j].setColor(Color::make(0,0,255,255));
-			else if (data == 2)
+			else if (team == 2)
 				map_[i][j].setColor(Color::make(255,0,0,255));
 		}
 	}

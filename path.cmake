@@ -13,4 +13,6 @@ set( CPP
 		src/Rendering/FPS.cpp
 		src/WorldMap.cpp
 		src/Misc/Camera.cpp
+		src/States/StateManager.cpp
+		src/States/Setup.cpp
 )

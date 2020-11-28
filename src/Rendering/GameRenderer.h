@@ -33,6 +33,7 @@ class GameRenderer
 		void init (unsigned int w, unsigned int h, const char* windowTitle);
 		void drawMap (void);		
 		void drawSprites (void) const;		
+		void drawRectangle (float x, float y, int w, int h, Color color, unsigned int textureId) const;
 	
 		void checkTextures (void);
 		void loadTexture (Texture & texture);

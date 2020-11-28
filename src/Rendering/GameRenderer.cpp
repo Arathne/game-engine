@@ -1,5 +1,7 @@
 #include "GameRenderer.h"
 
+/* CONSTRUCTORS || DESTRUCTOR */
+
 GameRenderer::GameRenderer (void) 
 {
 	init(800, 800, "Game");
@@ -10,6 +12,9 @@ GameRenderer::GameRenderer (unsigned int w, unsigned int h, const char* windowTi
 	init(w, h, windowTitle);
 }
 
+
+/* destroys window and textures loaded in gpu
+*/
 GameRenderer::~GameRenderer (void)
 {
 	if (renderer_ != nullptr)
@@ -32,6 +37,9 @@ GameRenderer::~GameRenderer (void)
 	SDL_Quit();
 }
 
+
+/* initializes renderer and crashes program if failed
+*/
 void GameRenderer::init (unsigned int w, unsigned int h, const char* windowTitle)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -50,16 +58,25 @@ void GameRenderer::init (unsigned int w, unsigned int h, const char* windowTitle
 	IMG_Init(IMG_INIT_PNG);
 }
 
+
+/* show window
+*/
 void GameRenderer::show (void)
 {
 	SDL_ShowWindow(window_);
 }
 
+
+/* hide window
+*/
 void GameRenderer::hide (void)
 {
 	SDL_HideWindow(window_);
 }
 
+
+/* draws everything in game
+*/
 void GameRenderer::draw (void)
 {
 	GameRenderer::checkTextures();	
@@ -76,6 +93,32 @@ void GameRenderer::draw (void)
 	FPS::check();
 }
 
+
+/* draws a single square
+*/
+void GameRenderer::drawRectangle (float x, float y, int w, int h, Color color, unsigned int textureId) const
+{
+	Camera camera = Workspace::getCamera();
+	glm::vec3 position = camera.getTransform() * glm::vec3(x, y, 1.0f);
+	
+	SDL_Rect rectangle;
+	rectangle.x = position.x;
+	rectangle.y = position.y;
+	rectangle.w = w;
+	rectangle.h = h;
+			
+	SDL_SetRenderDrawColor( renderer_, color.red(), color.green(), color.blue(), color.alpha() );
+			
+	int textureIndex = GameRenderer::getTextureIndex(textureId);
+	if (textureIndex < 0)
+		SDL_RenderFillRect( renderer_, &rectangle );
+	else
+		SDL_RenderCopy( renderer_, loadedTextures_.at(textureIndex), nullptr, &rectangle );
+}
+
+
+/* gets all tiles in map and draws them
+*/
 void GameRenderer::drawMap (void)
 {
 	Map* currentMap = Workspace::getCurrentMap();
@@ -84,30 +127,12 @@ void GameRenderer::drawMap (void)
 	{
 		std::vector<Tile*> tiles = currentMap-> getTiles();
 		Camera camera = Workspace::getCamera();
-		glm::vec2 position = camera.getPosition();
-		glm::mat3 transform = camera.getTransform();		
 
  		for (auto it = tiles.begin(); it != tiles.end(); it++ )
 		{
 			Tile current = **it;
-			
-			glm::vec3 position = transform * glm::vec3((float) current.getPosition().x, (float) current.getPosition().y, 1.0f);
-
-			Color color = current.getColor();
-			
-			SDL_Rect rectangle;
-			rectangle.x = position.x;
-			rectangle.y = position.y;
-			rectangle.w = current.getWidth();
-			rectangle.h = current.getHeight();
-			
-			SDL_SetRenderDrawColor( renderer_, color.red(), color.green(), color.blue(), color.alpha() );
-			
-			int textureIndex = GameRenderer::getTextureIndex(current.getTextureId());
-			if (textureIndex < 0)
-				SDL_RenderFillRect( renderer_, &rectangle );
-			else
-				SDL_RenderCopy( renderer_, loadedTextures_.at(textureIndex), nullptr, &rectangle );
+			glm::vec2 position = current.getPosition();
+			GameRenderer::drawRectangle((float)position.x, (float)position.y, current.getWidth(), current.getHeight(), current.getColor(), current.getTextureId());
 		}
 	}
 }
