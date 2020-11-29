@@ -1,3 +1,8 @@
+## select 5 bases in home region
+## click blue area and then red area to shoot missiles
+## thats all you can do at the moment
+
+## OLD
 #### see uml
 ## game engine
 #### dependencies -- use ubuntu on windows w/ xming server
