@@ -15,6 +15,7 @@ class SpriteBase : public Sprite
 		glm::vec2 getAcceleration (void)	const;	
 		glm::vec2 getSize (void) const;
 		glm::vec2 getDirection (void) const;
+		float getSpeed (void) const;
 
 		unsigned int getId (void) const;
 		bool isVisible (void) const;	
@@ -49,7 +50,8 @@ class SpriteBase : public Sprite
 		void setVelocity (glm::vec2 velocity);
 		void setPosition (glm::vec2 position);		
 		void setColor (int r, int g, int b, int a);		
-
+		void setSpeed (float speed);
+		
 	private:
 		static unsigned int spriteIdCounter_;
 		unsigned int id_;
@@ -62,6 +64,7 @@ class SpriteBase : public Sprite
 		glm::vec2 velocity_;
 		glm::vec2 acceleration_;
 		glm::vec2 direction_;
+		float speed_;
 };
 
 #endif

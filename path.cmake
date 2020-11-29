@@ -18,4 +18,5 @@ set( CPP
 		src/Player.cpp
 		src/Game.cpp
 		src/States/SetupComputer.cpp
+		src/States/War.cpp
 )

@@ -2,6 +2,7 @@
 #define SETUP_COMPUTER_H
 
 #include "Node.h"
+#include "War.h"
 
 class SetupComputer : public Node
 {

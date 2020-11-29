@@ -12,6 +12,9 @@ Node* SetupComputer::process (Game & game)
 	{
 		game.addRandomBase(1);
 	}
+	
+	nextState = new War();
+	std::cout << "state change :: war" << std::endl;
 
 	return nextState;
 }

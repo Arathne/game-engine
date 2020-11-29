@@ -17,7 +17,8 @@ SpriteBase::SpriteBase (int x, int y, int w, int h):
 	position_ (glm::vec2(x, y)),
 	velocity_ (glm::vec2(0, 0)),
 	acceleration_ (glm::vec2(0, 0)),
-	direction_ (glm::vec2(0, 0))
+	direction_ (glm::vec2(0, 0)),
+	speed_ (1.0f)
 {
 	frame_.setSize(w, h);
 }
@@ -60,6 +61,11 @@ bool SpriteBase::isVisible (void) const
 glm::vec2 SpriteBase::getDirection (void) const 
 {
 	return direction_;
+}
+
+float SpriteBase::getSpeed (void) const
+{
+	return speed_;
 }
 
 /* SETTERS */
@@ -142,11 +148,17 @@ void SpriteBase::setVisible (bool visible)
 void SpriteBase::setDirection (glm::vec2 direction)
 {
 	direction_ = direction;
+	velocity_ = glm::normalize(direction);
 }	
 
 void SpriteBase::setColor (int r, int g, int b, int a)
 {
 	frame_.setColor(r, g, b, a);
+}
+
+void SpriteBase::setSpeed (float speed)
+{
+	speed_ = speed;
 }
 			
 

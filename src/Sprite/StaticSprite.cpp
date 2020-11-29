@@ -17,9 +17,6 @@ int StaticSprite::getType (void) const
 
 void StaticSprite::update (void) 
 {
-	glm::vec2 newPosition = SpriteBase::getPosition() + SpriteBase::getVelocity();
-	glm::vec2 newDirection = newPosition - SpriteBase::getPosition();
-
+	glm::vec2 newPosition = SpriteBase::getPosition() + (SpriteBase::getVelocity() * SpriteBase::getSpeed());
 	SpriteBase::setPosition( newPosition );
-	SpriteBase::setDirection( newDirection );
 }

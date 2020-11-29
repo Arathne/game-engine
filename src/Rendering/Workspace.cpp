@@ -117,7 +117,7 @@ std::vector<Sprite*> & Workspace::getSprites (void)
 
 void Workspace::tick (void)
 {
-	Collision::check( sprites_ );
+	//Collision::check( sprites_ );
 	for (auto it = sprites_.begin(); it != sprites_.end(); it++)
 	{
 		Sprite* current = *it;
