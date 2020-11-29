@@ -32,6 +32,7 @@ Node* War::process (Game & game)
 			StaticSprite* sprite = new StaticSprite(playerPosition_.x, playerPosition_.y, 8, 8);			
 			sprite-> setDirection(direction);
 			sprite-> setSpeed(2.0f);
+			sprite-> selfDestruct(enemyPosition_);
 			Workspace::addSprite(*sprite);			
 
 			playerPosition_.x = -86;

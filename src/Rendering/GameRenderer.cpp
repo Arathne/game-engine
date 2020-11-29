@@ -143,25 +143,14 @@ void GameRenderer::drawSprites (void) const
 	
 	for (auto it = sprites.begin(); it != sprites.end(); it++)
 	{
-		Rectangle frame = (**it).getFrame();
+		if ((**it).isVisible())
+		{
+			Rectangle frame = (**it).getFrame();
 		
-		glm::vec2 position = (**it).getPosition();
+			glm::vec2 position = (**it).getPosition();
 		
-		GameRenderer::drawRectangle((float)position.x, (float)position.y, frame.getWidth(), frame.getHeight(), frame.getColor(), frame.getTextureId());
-
-		/*SDL_Rect rectangle;
-		rectangle.x = position.x;
-		rectangle.y = position.y;
-		rectangle.w = frame.getWidth();
-		rectangle.h = frame.getHeight();
-			
-		SDL_SetRenderDrawColor( renderer_, color.red(), color.green(), color.blue(), color.alpha() );
-			
-		int textureIndex = GameRenderer::getTextureIndex(frame.getTextureId());
-		if (textureIndex < 0)
-			SDL_RenderFillRect( renderer_, &rectangle );
-		else
-			SDL_RenderCopy( renderer_, loadedTextures_.at(textureIndex), nullptr, &rectangle );*/
+			GameRenderer::drawRectangle((float)position.x, (float)position.y, frame.getWidth(), frame.getHeight(), frame.getColor(), frame.getTextureId());
+		}
 	}
 }	
 

@@ -19,6 +19,7 @@ class Sprite
 		virtual void setVelocity (glm::vec2 velocity) = 0;
 		virtual void setVelocityX (int dx) = 0;
 		virtual void setPosition (glm::vec2 position) = 0;		
+		virtual bool isVisible (void) const = 0;	
 
 		virtual Rectangle & getFrame (void) = 0;
 		virtual unsigned int getId (void) const = 0;

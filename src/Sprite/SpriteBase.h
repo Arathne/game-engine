@@ -52,6 +52,11 @@ class SpriteBase : public Sprite
 		void setColor (int r, int g, int b, int a);		
 		void setSpeed (float speed);
 		
+		void selfDestruct(glm::vec2 destroy_);
+		glm::vec2 getDestruction (void) const;
+		void setDestroy (bool destroy);
+		bool canDestroy (void) const;
+
 	private:
 		static unsigned int spriteIdCounter_;
 		unsigned int id_;
@@ -64,7 +69,10 @@ class SpriteBase : public Sprite
 		glm::vec2 velocity_;
 		glm::vec2 acceleration_;
 		glm::vec2 direction_;
+		glm::vec2 destroy_;
+		
 		float speed_;
+		bool canDestroy_;
 };
 
 #endif

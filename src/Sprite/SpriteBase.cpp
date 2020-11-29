@@ -8,7 +8,8 @@ SpriteBase::SpriteBase (void):
 	position_ (glm::vec2(0, 0)),
 	velocity_ (glm::vec2(0, 0)),
 	acceleration_ (glm::vec2(0, 0)),
-	direction_ (glm::vec2(0, 0))
+	direction_ (glm::vec2(0, 0)),
+	canDestroy_(false)
 {}
 
 SpriteBase::SpriteBase (int x, int y, int w, int h):
@@ -18,7 +19,8 @@ SpriteBase::SpriteBase (int x, int y, int w, int h):
 	velocity_ (glm::vec2(0, 0)),
 	acceleration_ (glm::vec2(0, 0)),
 	direction_ (glm::vec2(0, 0)),
-	speed_ (1.0f)
+	speed_ (1.0f),
+	canDestroy_(false)
 {
 	frame_.setSize(w, h);
 }
@@ -192,4 +194,25 @@ bool SpriteBase::operator == (const Sprite & rhs)
 bool SpriteBase::operator != (const Sprite & rhs)
 {
 	return !(*this == rhs);
+}
+		
+void SpriteBase::selfDestruct(glm::vec2 destroy)
+{
+	canDestroy_ = true;
+	destroy_ = destroy;
+}
+
+glm::vec2 SpriteBase::getDestruction (void) const
+{
+	return destroy_;
+}
+
+bool SpriteBase::canDestroy (void) const
+{
+	return canDestroy_;
+}
+
+void SpriteBase::setDestroy (bool destroy)
+{
+	canDestroy_ = destroy;
 }
